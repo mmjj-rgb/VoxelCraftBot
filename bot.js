@@ -407,7 +407,7 @@ client.on('message', (message) => {
     if(command === 'botinfo') {
       message.channel.send({embed: {
         color: 1752220,
-        title: "Lista Komend",
+        title: "BotInfo",
         fields: [{
             name: "VoxelCraftBot by mmjj",
             value: '**Bot zrobiony 17 godzin :p.**'
