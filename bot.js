@@ -25,7 +25,7 @@ client.on('message', (message) => {
                 title: "ERROR",
                 fields: [{
                     name: "Brak Uprawnień",
-                    value: 'Aby móc wykonać tą komendę musisz mieć rolę `vcb.perms`'
+                    value: 'Aby móc wykonać tą komendę musisz mieć rolę `Admin`'
                   }
                 ],
                 timestamp: new Date(),
@@ -83,7 +83,7 @@ client.on('message', (message) => {
            title: "ERROR",
            fields: [{
                name: "Brak Uprawnień",
-               value: 'Aby móc wykonać tą komendę musisz mieć rolę `vcb.perms`'
+               value: 'Aby móc wykonać tą komendę musisz mieć rolę `Admin`'
              }
            ],
            timestamp: new Date(),
@@ -158,7 +158,7 @@ client.on('message', (message) => {
             title: "ERROR",
             fields: [{
                 name: "Brak Uprawnień",
-                value: 'Aby móc wykonać tą komendę musisz mieć rolę `vcb.perms`'
+                value: 'Aby móc wykonać tą komendę musisz mieć rolę `Admin`'
               }
             ],
             timestamp: new Date(),
@@ -213,7 +213,7 @@ client.on('message', (message) => {
            title: "ERROR",
            fields: [{
                name: "Brak Uprawnień",
-               value: 'Aby móc wykonać tą komendę musisz mieć rolę `vcb.perms`'
+               value: 'Aby móc wykonać tą komendę musisz mieć rolę `Admin`'
              }
            ],
            timestamp: new Date(),
@@ -272,7 +272,7 @@ client.on('message', (message) => {
             title: "ERROR",
             fields: [{
                 name: "Brak Uprawnień",
-                value: 'Aby móc wykonać tą komendę musisz mieć rolę `vcb.perms`'
+                value: 'Aby móc wykonać tą komendę musisz mieć rolę `Admin`'
               }
             ],
             timestamp: new Date(),
@@ -343,7 +343,7 @@ client.on('message', (message) => {
             title: "ERROR",
             fields: [{
                 name: "Brak Uprawnień",
-                value: 'Aby móc wykonać tą komendę musisz mieć rolę `vcb.perms`'
+                value: 'Aby móc wykonać tą komendę musisz mieć rolę `Admin`'
               }
             ],
             timestamp: new Date(),
