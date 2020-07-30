@@ -115,7 +115,7 @@ client.on('message', (message) => {
        return;
       } else
         message.delete()
-        client.channels.cache.get(config.ogloszenia).send({embed: {
+        client.channels.cache.get(config.eventy).send({embed: {
           color: 3066993,
           title: "EVENT",
           fields: [{
