@@ -41,6 +41,7 @@ exports.run = (client, message, args) => {
       } else
       if (ilosc > 100) return message.reply(`Nie możesz usunąć więcej niż 100 wiadomości naraz`);
       if (ilosc < 1) return message.reply('Musisz usunąć przynajmniej 1 wiadomość');
+      message.delete()
       message.channel.bulkDelete(ilosc)
       const embed = new Discord.MessageEmbed()
         .setTitle('CLEAR')
