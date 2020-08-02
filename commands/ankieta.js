@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
          title: "ERROR",
          fields: [{
              name: "Brak Uprawnień",
-             value: 'Aby móc wykonać tą komendę musisz mieć rolę `🔧vcb.perms.low`'
+             value: 'Aby móc wykonać tą komendę musisz mieć rolę `ADMIN`'
            }
          ],
          timestamp: new Date(),
