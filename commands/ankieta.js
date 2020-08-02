@@ -4,13 +4,13 @@ exports.run = (client, message, args) => {
     const member = message.member;
     const [pytanie, odp1, odp2, odp3, odp4, odp5] = message.content.slice(8).trim().split(' | ');
     message.delete()
-    if (!member.roles.cache.some(role => role.name === 'ADMIN')) {
+    if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.low')) {
       message.channel.send({embed: {
          color: 15158332,
          title: "ERROR",
          fields: [{
              name: "Brak Uprawnień",
-             value: 'Aby móc wykonać tą komendę musisz mieć rolę `ADMIN`'
+             value: 'Aby móc wykonać tą komendę musisz mieć rolę `🔧vcb.perms.low`'
            }
          ],
          timestamp: new Date(),
