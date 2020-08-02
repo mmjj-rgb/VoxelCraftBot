@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
     const member = message.member;
     const [pytanie, odp1, odp2, odp3, odp4, odp5] = message.content.slice(8).trim().split(' | ');
     message.delete()
-    if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.low')) {
+    if (!member.roles.cache.some(role => role.name === 'ADMIN')) {
       message.channel.send({embed: {
          color: 15158332,
          title: "ERROR",
