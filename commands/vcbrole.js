@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-
+  const member = message.member;
   message.delete()
   if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.high')) {
     message.channel.send({embed: {
