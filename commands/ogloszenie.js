@@ -1,5 +1,7 @@
 exports.run = (client, message, args) => {
     const member = message.member;
+    const Discord = require('discord.js')
+    const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
     if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.high')) {
         message.channel.send({embed: {
             color: 15158332,
@@ -54,4 +56,11 @@ exports.run = (client, message, args) => {
           }
           }
       })
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Sworzono ogłoszenie na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
     }

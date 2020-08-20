@@ -1,46 +1,22 @@
 exports.run = (client, message, args) => {
     message.channel.send({embed: {
         color: 3066993,
-        title: "Lista Komend",
+        title: "Lista Komend ()",
         fields: [{
-            name: "!help",
-            value: 'Pokazuje tą wiadomość.'
+            name: "ADMINISTRACYJNE (3)",
+            value: '`ogloszenie, event, ankieta`'
           },
           {
-            name: '!ogloszenie <treść>',
-            value: 'Wysyła ogłoszenie na kanał #ogłoszenia .'
+            name: 'MODERACYJNE (5)',
+            value: '`ban, kick, clear, vcbrole, invites`'
           },
           {
-            name: '!event <treść>',
-            value: 'Wysyła informacje o evencie na kanał #eventy .'
+            name: 'PRZYDATNE (5)',
+            value: '`formularz, strona, ping, botinfo, event, help`'
           },
           {
-            name: '!strona',
-            value: 'Wysyła link do naszej strony.'
-          },
-          {
-            name: '!clear <ilość>',
-            value: 'Usuwa daną ilość wiadomości.'
-          },
-          {
-            name: '**!ankieta <pytanie> | <odp1> | <odp2> | <odp3> | <odp4> | <odp5>**',
-            value: 'Tworzy ankietę na kanale #ankiety .'
-          },
-          {
-            name: '!ban <@użytkownik> <powód>',
-            value: 'Banuje danego użytkownika.'
-          },
-          {
-            name: '!kick <@użytkownik> <powód>',
-            value: 'Wyrzuca danego użytkownika z serwera.'
-          },
-          {
-            name: '!botinfo',
-            value: 'Podaje informacje o bocie.'
-          },
-          {
-            name: "!vcbrole",
-            value: 'Dodaje na serwer role z permisjami.'
+            name: '4FUN (7)',
+            value: '`korwin, pikachu, cat, dog, panda, fox, meme`'
           }
         ],
         timestamp: new Date(),

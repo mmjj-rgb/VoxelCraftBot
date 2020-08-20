@@ -9,5 +9,6 @@ module.exports = (client) => {
       let activity = activities[Math.floor(Math.random() * activities.length)];
       client.user.setActivity(activity, { type: "WATCHING" });
     }, 2000);
+    client.user.setStatus('dnd');
   
   };

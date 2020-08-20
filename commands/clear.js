@@ -1,6 +1,7 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   let ilosc = args.join(" ");
   const Discord = require('discord.js');
+  const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
   const member = message.member;
     if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.low')) {
         message.channel.send({embed: {
@@ -44,12 +45,19 @@ exports.run = (client, message, args) => {
       message.delete()
       message.channel.bulkDelete(ilosc)
       const embed = new Discord.MessageEmbed()
-        .setTitle('CLEAR')
+        .setTitle('')
         .setColor('#00D166')
         .setDescription('Usunięto ' + ilosc + ' wiadomości <a:emoji_01:738012159178571800>')
         .addField('Odpowiedzialny administrator:', `**${message.author.username}**`)
         .setTimestamp()
         .setFooter('VoxelCraftBot ©', 'https://cdn.discordapp.com/icons/683318858798596125/04ac8603160fbd773c3bcf8c4969151f.png?size=128')
         message.channel.send(embed)
+      const embed2 = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Usunięto ` + ilosc + ` wiadomości, na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed2)
       return;
 };

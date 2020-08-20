@@ -1,5 +1,6 @@
 exports.run = async (client, message, args) => {
   const Discord = require('discord.js')
+  let czas = client.uptime/1000
   let inline = true
   let bicon = client.user.displayAvatarURL;
   let usersize = client.users.cache.size
@@ -17,7 +18,8 @@ exports.run = async (client, message, args) => {
   .addField("Kanały:", `📁 ${chansize}`, inline)
   .addField("Użytkownicy:", `👥 ${usersize}`, inline)
   .addField("Biblioteka Bota:", "<:logodjs:739391068986146841> Discord.js", inline)
-  .addField("Założony w:", client.user.createdAt)
+  .addField("Założony :", 'Piątek 31 lipca 12:40')
+  .addField("Uptime:", `${Math.round(czas)}s`, true)
   .addField("Ping:", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
   .addField("Ping API:", `${Math.round(client.ws.ping)}ms`, true)
   .setFooter('VoxelCraftBot ©', 'https://cdn.discordapp.com/icons/683318858798596125/04ac8603160fbd773c3bcf8c4969151f.png?size=128')

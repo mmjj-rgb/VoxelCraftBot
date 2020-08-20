@@ -1,6 +1,8 @@
 exports.run = (client, message, args) => {
   let text = args.join(" ")
   const member = message.member;
+  const Discord = require('discord.js')
+  const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
   message.delete()
   if(!args.length) {
     message.channel.send({embed: {
@@ -56,5 +58,12 @@ exports.run = (client, message, args) => {
           text: "VoxelCraftBot ©"
         }
         }
-      });
+      })
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Sworzono event na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
   }

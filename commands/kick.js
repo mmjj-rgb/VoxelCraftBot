@@ -2,6 +2,8 @@ exports.run = (client, message, args) => {
   let msgArgs = message.content.split(' ').slice(1);
   let user = message.mentions.users.first();
   let kickReason = args.slice(1).join(' ');
+  const Discord = require('discord.js')
+  const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
   const member = message.member;
     if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.low')) {
       message.channel.send({embed: {
@@ -28,7 +30,7 @@ exports.run = (client, message, args) => {
       description: 'Błąd formatu wiadomości',
       fields: [{
           name: "Poprawne użycie:",
-          value: '**!ban <oznaczenie użytkownika, którego mam zbanować.> <powód>**'
+          value: '**!kick <oznaczenie użytkownika, którego mam zbanować.> <powód>**'
         }
       ],
       timestamp: new Date(),
@@ -64,7 +66,13 @@ exports.run = (client, message, args) => {
         text: "VoxelCraftBot ©"
       }
     }
-   }).then(messageReaction => {
-    messageReaction.react(config.emotka1);
-   })}
+   })
+    const embed = new Discord.MessageEmbed()
+    .setTitle('LOGI')
+    .setColor('#00D166')
+    .setDescription('Wyrzucono użytkownika ' + user.username)
+    .setFooter(`${message.author.username}`)
+    .setTimestamp()
+    webhook.send(embed)
+   }
 };

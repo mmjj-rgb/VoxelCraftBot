@@ -2,6 +2,8 @@ exports.run = (client, message, args) => {
     let msgArgs = args.slice(1).join(" ")
     let text = args.join(" ")
     const member = message.member;
+    const Discord = require('discord.js')
+    const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
     const [pytanie, odp1, odp2, odp3, odp4, odp5] = message.content.slice(8).trim().split(' | ');
     message.delete()
     if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.low')) {
@@ -39,6 +41,7 @@ exports.run = (client, message, args) => {
      })
      return;
     } else
+
     if(odp5) {
       client.channels.cache.get(client.config.ankiety).send({embed: {
         color: 3066993,
@@ -76,6 +79,13 @@ exports.run = (client, message, args) => {
         messageReaction.react('🇩');
         messageReaction.react('🇪');
       })
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Sworzono ankietę na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
     } else
     if(odp4) {
       client.channels.cache.get(client.config.ankiety).send({embed: {
@@ -109,6 +119,13 @@ exports.run = (client, message, args) => {
         messageReaction.react('🇨');
         messageReaction.react('🇩');
       })
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Sworzono ankietę na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
     } else
 
     if(odp3) {
@@ -138,6 +155,13 @@ exports.run = (client, message, args) => {
         messageReaction.react('🇧');
         messageReaction.react('🇨');
       })
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Sworzono ankietę na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
     } else
 
     if(odp2) {
@@ -162,6 +186,13 @@ exports.run = (client, message, args) => {
         messageReaction.react('🇦');
         messageReaction.react('🇧');
       })
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription(`Sworzono ankietę na kanale <#${message.channel.id}>`)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
     } else 
 
     if(odp1) {

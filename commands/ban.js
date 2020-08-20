@@ -2,7 +2,9 @@ exports.run = (client, message, args) => {
       let msgArgs = message.content.split(' ').slice(1);
       let user = message.mentions.users.first();
       let banReason = args.slice(1).join(' ');
+      const Discord = require('discord.js')
       const member = message.member;
+      const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
       if (!member.roles.cache.some(role => role.name === '🔧vcb.perms.high')) {
         message.channel.send({embed: {
             color: 15158332,
@@ -64,7 +66,12 @@ exports.run = (client, message, args) => {
             text: "VoxelCraftBot ©"
           }
         }
-       }).then(messageReaction => {
-        messageReaction.react(client.config.emotka1);
-       })}
+      })}
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription('Zbanowano użytkownika ' + user.username)
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
     }

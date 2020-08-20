@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
 
-const client = new Discord.Client();
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 
-const fs = require('fs')
+const fs = require('fs');
+
+const { get } = require('snekfetch')
 
 const Enmap = require("enmap");
 
@@ -37,19 +39,31 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-client.on('message', (message) => {
-    if (message.channel.type === "dm" || message.author.bot || message.author === client.user) return;
+client.on('message', async message => {
+    if (message.author.bot || message.author === client.user) return;
+    let guild = client.guilds.cache.get('711234725955633173')
 	  var args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     var command = args.shift().toLowerCase();
     const member = message.member;
     const amount = args.join(' ');
-
-    if(message.content === '<@!738707549917937766>') {
+    const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
+    if (!message.channel.type === "dm") return;
+      if (!message.content.startsWith('1.')) return;
+      message.react('739812127308775456')
+      const embed2 = new Discord.MessageEmbed()
+      .setTitle('PODANIE')
+      .setColor('#00D166')
+      .setDescription('Pomyślnie wysłano twój formularz na kanał administracyjny')
+      .setFooter('VoxelCraftBot ©', 'https://cdn.discordapp.com/icons/683318858798596125/04ac8603160fbd773c3bcf8c4969151f.webp?size=128')
+      .setTimestamp()
+      client.channels.cache.get(config.formularze).send(embed2)
       const embed = new Discord.MessageEmbed()
-        .setTitle('POMOC')
-        .setColor('#00D166')
-        .setDescription(`Hej ${message.author.username}! Mój prefix to ` + '`' + config.prefix + '`' + 'aby otrzymać listę komend wpisz komendę' + config.prefix + '`help`')
-    }
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription('Użytkownik ' + message.author.username + ' stworzył podanie')
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
 });
 
 client.login(process.env.BOT_TOKEN);

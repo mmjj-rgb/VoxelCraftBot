@@ -1,5 +1,7 @@
 exports.run = (client, message, args) => {
   const member = message.member;
+  const Discord = require('discord.js')
+  const webhook = new Discord.WebhookClient(client.config.logsId, client.config.logsToken);
   message.delete()
   if (!member.roles.cache.some(role => role.name === 'ADMIN')) {
     message.channel.send({embed: {
@@ -29,6 +31,11 @@ exports.run = (client, message, args) => {
     })
     console.log(`Stworzono rolę 🔧vcb.perms.high na sewerze ${message.guild.name}`)
     message.channel.send('Stworzono rolę `🔧vcb.perms.high`.')
+    const embed = new Discord.MessageEmbed()
+    .setTitle('LOGI')
+    .setColor('#00D166')
+    .setDescription('Sworzono role `vcb.perms.high`')
+    webhook.send(embed)
   }
   else {
     return;
@@ -43,8 +50,15 @@ exports.run = (client, message, args) => {
       })
       console.log(`Stworzono rolę 🔧vcb.perms.low na serwerze ${message.guild.name}`)
       message.channel.send('Stworzono rolę `🔧vcb.perms.low`.')
-    }
-    else {
+      const embed = new Discord.MessageEmbed()
+      .setTitle('LOGI')
+      .setColor('#00D166')
+      .setDescription('Sworzono role `vcb.perms.low`')
+      .setFooter(`${message.author.username}`)
+      .setTimestamp()
+      webhook.send(embed)
+  }
+  else {
       return;
     }
   }
