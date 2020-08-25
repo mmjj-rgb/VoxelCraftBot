@@ -7,7 +7,7 @@ module.exports = (client) => {
     const activities = ['VOXELCRAFT.CSRV.PL','voxel-craft.github.io','!help'];
     setInterval(() => {
       let activity = activities[Math.floor(Math.random() * activities.length)];
-      client.user.setActivity(activity, { type: "WATCHING" });
+      client.user.setActivity(activity, { type: "STREAMING", url: "https://twitch.tv/TheTuso" });
     }, 2000);
     client.user.setStatus('dnd');
   
