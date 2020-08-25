@@ -1,15 +1,10 @@
 exports.run = (client, message, args) => {
-    const { get } = require('snekfetch')
+    const fetch = require('node-fetch')
     const Discord = require('discord.js')
     message.delete()
-    try {
-        get('https://some-random-api.ml/meme').then(res => {
-            const embed = new Discord.MessageEmbed()
-            .setDescription(res.body.caption)
-            .setImage(res.body.image)
-            return message.channel.send({embed});
-        });
-    } catch(err) {
-        return message.channel.send(err.stack);
+    const { image } = await fetch('https://some-random-api.ml/meme ').then(reponse => reponse.json());
+    const embed = new Discord.MessageEmbed()
+    .setImage(image)
+    return message.channel.send({embed});
     }
-}
+} 
