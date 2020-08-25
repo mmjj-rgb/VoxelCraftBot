@@ -5,4 +5,5 @@ exports.run = async (client, message, args) => {
     const { message } = await fetch('https://dog.ceo/api/breeds/image/random').then(reponse => reponse.json());
     const embed = new Discord.MessageEmbed()
     .setImage(message) 
+    message.channel.send(embed)
 } 
