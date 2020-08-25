@@ -3,7 +3,7 @@ exports.run = async (client, message, args) => {
     const text = args.join(" ") 
     message.channel.send({embed: {
         title: "STRONA", 
-        description: `[POBIERZ](${message.author.avatarUrl} )`
+        description: `[POBIERZ](${message.author.avatarUrl} )`, 
         image: {
 		url: `${message.author.avatarUrl}`,
 	},
