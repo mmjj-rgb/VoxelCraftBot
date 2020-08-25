@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
     const avatarEmbed = new Discord.MessageEmbed()
         .setColor(0x333333)
         .setAuthor(user.username)
-        .setImage(user.avatarURL);
+        .setImage(message.author.avatarUrl);
     message.channel.send(avatarEmbed);
 } 
 
