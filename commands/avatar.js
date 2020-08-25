@@ -1,13 +1,10 @@
 exports.run = async (client, message, args) => {
     const Discord = require('discord.js')
-    const text = args.join(" ") 
-    const img = message.author.avatarUrl
-    message.channel.send({embed: {
-        title: "STRONA", 
-        description: `[POBIERZ](${message.author.avatarUrl} )`, 
-        image: {
-		url: img,
-	},
-      }
-   })
+    const user = message.mentions.users.first() || message.author;
+    const avatarEmbed = new Discord.MessageEmbed()
+        .setColor(0x333333)
+        .setAuthor(user.username)
+        .setImage(user.avatarURL);
+    message.channel.send(avatarEmbed);
+} 
 } 
