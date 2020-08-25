@@ -39,6 +39,16 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
+client.on('guildMemberAdd', member => {
+    if (member.guild.id != "683318858798596125") return;
+    client.channels.get(747828285228187648 ).setName(`📊 LUDZIE: ${member.guild.membersCount}`);
+});
+
+client.on('guildMemberRemove', member => {
+    if (member.guild.id !== "683318858798596125") return;
+    client.channels.get(747828285228187648).setName(`📊 LUDZIE: ${member.guild.membersCount}`);
+});
+
 client.on('message', async message => {
     if (message.author.bot || message.author === client.user) return;
     let guild = client.guilds.cache.get('711234725955633173')
