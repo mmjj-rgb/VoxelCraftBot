@@ -1,10 +1,12 @@
 exports.run = async (client, message, args) => {
     const Discord = require('discord.js')
     const text = args.join(" ") 
-    const embed = new Discord.MessageEmbed()
-    .setTitle(`Avatar użytkownika ${text}`) 
-    .setDescription('Pobierz')
-    .setUrl(`${message.author.avatarUrl}`)
-    .setImage(`${message.author.avatarUrl}`)
-    message.channel.send(embed)
+    message.channel.send({embed: {
+        title: "STRONA", 
+        description: `[POBIERZ](${message.author.avatarUrl} )`
+        image: {
+		url: `${message.author.avatarUrl}`,
+	},
+      }
+   })
 } 
