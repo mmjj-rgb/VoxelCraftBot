@@ -49,7 +49,7 @@ client.on('message', async message => {
     const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
     if (message.content.includes === "aha") {
         message.delete()
-	message.channel.send(`${message.author.username} jest patusem i pisze "aha" :c`)
+	message.channel.send(`${message.author.username} jest patusem i pisze "aha" i elo benc :c`)
     }
 });
 
