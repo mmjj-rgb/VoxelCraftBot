@@ -47,7 +47,7 @@ client.on('message', async message => {
     const member = message.member;
     const amount = args.join(' ');
     const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
-    if (message.content === "aha") {
+    if (message.content.includes === "aha") {
         message.delete()
 	message.channel.send(`${message.author.username} jest patusem i pisze "aha" :c`)
     }
