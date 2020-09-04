@@ -47,7 +47,7 @@ client.on('message', async message => {
     const member = message.member;
     const amount = args.join(' ');
     const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
-    if (!message.channel.type === "dm") return;
+    if (!message.channel.type === "dm") {
       if (!message.content.startsWith('1.')) return;
       message.react('739812127308775456')
       const embed2 = new Discord.MessageEmbed()
@@ -64,6 +64,7 @@ client.on('message', async message => {
       .setFooter(`${message.author.username}`)
       .setTimestamp()
       webhook.send(embed)
+   }
 });
 
 client.login(process.env.BOT_TOKEN);
