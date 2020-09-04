@@ -47,24 +47,10 @@ client.on('message', async message => {
     const member = message.member;
     const amount = args.join(' ');
     const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
-    if (!message.channel.type === "dm") {
-      if (!message.content.startsWith('1.')) return;
-      message.react('739812127308775456')
-      const embed2 = new Discord.MessageEmbed()
-      .setTitle('PODANIE')
-      .setColor('#00D166')
-      .setDescription('Pomyślnie wysłano twój formularz na kanał administracyjny')
-      .setFooter('VoxelCraftBot ©', 'https://cdn.discordapp.com/icons/683318858798596125/04ac8603160fbd773c3bcf8c4969151f.webp?size=128')
-      .setTimestamp()
-      client.channels.cache.get(config.formularze).send(embed2)
-      const embed = new Discord.MessageEmbed()
-      .setTitle('LOGI')
-      .setColor('#00D166')
-      .setDescription('Użytkownik ' + message.author.username + ' stworzył podanie')
-      .setFooter(`${message.author.username}`)
-      .setTimestamp()
-      webhook.send(embed)
-   }
+    if (message.content === "aha") {
+        message.delete()
+	message.channel.send(`${message.author.username} jest patusem i pisze "aha" :c`)
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
