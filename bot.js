@@ -32,12 +32,18 @@ fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
-    let props = require(`./commands/${file}`);
+    let commandFile = require(`./commands/${file}`);
     let commandName = file.split(".")[0];
     console.log(`Załadowano komendę : ${commandName}`);
-    client.commands.set(commandName, props);
+    client.commands.set(commandName, commandFile);
   });
 });
+
+const Collection = new Discord.Collection();
+
+Collection.set("commandName", "commandFile");
+const Command = Collection.get("commandName");
+if (!Command) return message.channel.send("The command does not exist.");
 
 client.on('message', async message => {
     if (message.author.bot || message.author === client.user) return;
@@ -47,7 +53,7 @@ client.on('message', async message => {
     const member = message.member;
     const amount = args.join(' ');
     const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
-    if (message.content.includes("aha")) {
+    if (message.content.includes("aha", "AHA",)) {
         message.delete()
 	message.channel.send(`${message.author.username} jest patusem i pisze "aha" i elo benc :c`)
     }
