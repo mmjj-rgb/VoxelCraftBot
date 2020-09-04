@@ -32,16 +32,16 @@ fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
-    let commandFile = require(`./commands/${file}`);
+    let props = require(`./commands/${file}`);
     let commandName = file.split(".")[0];
     console.log(`Załadowano komendę : ${commandName}`);
-    client.commands.set(commandName, commandFile);
+    client.commands.set(commandName, props);
   });
 });
 
 const Collection = new Discord.Collection();
 
-Collection.set("commandName", "commandFile");
+Collection.set("commandName", "props");
 const Command = Collection.get("commandName");
 if (!Command) return message.channel.send("The command does not exist.");
 
