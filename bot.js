@@ -39,12 +39,6 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-const Collection = new Discord.Collection();
-
-Collection.set("commandName", "props");
-const Command = Collection.get("commandName");
-if (!Command) return message.channel.send("The command does not exist.");
-
 client.on('message', async message => {
     if (message.author.bot || message.author === client.user) return;
     let guild = client.guilds.cache.get('711234725955633173')
