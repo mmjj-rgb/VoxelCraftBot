@@ -1,35 +1,48 @@
 exports.run = async (client, message, args) => {
     const ms = require('ms');
-    let tomute = client.users.cache.find(u => u.name === `${message.mentions.users.first()}`)
-    if(!tomute) return message.reply("Nie znaleziono użytkownika.");
-    if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Nie mam uprawnień do wyciszenia tego użytkownika!");
-    let muterole = message.channel.guild.cache.roles.find(`name`, "muted");
-    if(!muterole){
-    try{
-      muterole = await message.guild.createRole({
-        name: "muted",
-        color: "#000000",
-        permissions:[]
-      })
-      message.guild.channels.forEach(async (channel, id) => {
-        await channel.overwritePermissions(muterole, {
-          SEND_MESSAGES: false,
-          ADD_REACTIONS: false
-        });
-      });
-    }catch(e){
-      console.log(e.stack);
+    let messageArray = message.content.split(" ");
+    let args = messageArray.slice(1);
+    let cmd = messageArray[0];
+        if(message.member.hasPermission('MANAGE_MESSAGES')) {
+        var member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+        if(!member) return message.reply('Please Provide a Member to TempMute.')
+
+        let mainrole = message.guild.roles.cache.find(role => role.name === "Member");
+        let role = message.guild.roles.cache.find(role => role.name === "Muted");
+
+        if (!role) {
+            try{
+              muterole = await message.guild.createRole({
+                name: "Muted",
+                color: "#000000",
+                permissions:[]
+              })
+              message.guild.channels.forEach(async (channel, id) => {
+                await channel.overwritePermissions(role, {
+                  SEND_MESSAGES: false,
+                  ADD_REACTIONS: false
+                });
+              });
+            }
+        }
+
+        let time = args[1];
+        if (!time) {
+            return message.reply("Podaj czas wyciszenia!");
+        }
+
+        member.roles.remove(mainrole.id)
+        member.roles.add(role.id);
+
+        message.channel.send(`@${member.user.tag} został wyciszony na: ${ms(ms(time))}`)
+
+        setTimeout( function () {
+            member.roles.add(mainrole.id)
+            member.roles.remove(role.id);
+            message.channel.send(`@${member.user.tag} został odciszony.`)
+        }, ms(time));
+            
+    } else {
+        return message.channel.send('You dont have perms.')
     }
-  }
-  //end of create role
-  let mutetime = args[1];
-  if(!mutetime) return message.reply("Nie podałeś czasu!");
-
-  await(tomute.addRole(muterole.id));
-  message.reply(`<@${tomute.id}> został zmutowany na ${ms(ms(mutetime))}`);
-
-  setTimeout(function(){
-    tomute.removeRole(muterole.id);
-    message.channel.send(`<@${tomute.id}> został odmutowany!`);
-  }, ms(mutetime));
 }
