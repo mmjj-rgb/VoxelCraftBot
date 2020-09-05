@@ -17,7 +17,7 @@ exports.run = async (client, message) => {
                 color: "#000000",
                 permissions:[]
               })
-              message.guild.channels.forEach(async (channel, id) => {
+              message.guild.channels.cache.forEach(async (channel, id) => {
                 await channel.overwritePermissions(role, {
                   SEND_MESSAGES: false,
                   ADD_REACTIONS: false
