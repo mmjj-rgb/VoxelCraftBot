@@ -4,10 +4,12 @@ exports.run = async (client, message) => {
     let args = messageArray.slice(1);
     let cmd = messageArray[0];
         if(message.member.hasPermission('MANAGE_MESSAGES')) {
-        var member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+        var member = message.guild.member(message.mentions.users.first());
         if(!member) return message.reply('Please Provide a Member to TempMute.')
 
         let role = message.guild.roles.cache.find(role => role.name === "Muted");
+        let mainrole = message.guild.roles.cache.find(role => role.name === "VOXELCRAFT");
+
 
         if (!role) {
             try{
@@ -32,13 +34,13 @@ exports.run = async (client, message) => {
             return message.reply("Podaj czas wyciszenia!");
         }
 
-        member.roles.set([]).then(member => member.roles.add(role)).catch(console.error);
+        member.roles.add(role)
 
         message.channel.send(`@${member.user.tag} został wyciszony na: ${ms(ms(time))}`)
 
         setTimeout( function () {
-            member.roles.add(mainrole.id)
-            member.roles.remove(role.id);
+            member.roles.add(mainrole)
+            member.roles.remove(role);
             message.channel.send(`@${member.user.tag} został odciszony.`)
         }, ms(time));
             
