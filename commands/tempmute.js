@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
     const ms = require('ms');
-    let tomute = message.guild.users.cache.find(u => u.name === `${message.mentions.users.first()}`, `${message.guild.members.get(args[0])`)}`
+    let tomute = message.guild.users.cache.find(u => u.name === `${message.mentions.users.first()}`, `${message.guild.members.get(args[0])}`)
     if(!tomute) return message.reply("Nie znaleziono użytkownika.");
     if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Nie mam uprawnień do wyciszenia tego użytkownika!");
     let muterole = message.channel.guild.cache.roles.find(`name`, "muted");
