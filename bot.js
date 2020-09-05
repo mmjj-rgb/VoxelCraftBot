@@ -41,8 +41,6 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-client.on('message', (message) => antiSpam.message(message)); 
-
 client.on('message', async message =>  {
     if (message.author.bot || message.author === client.user) return;
     let guild = client.guilds.cache.get('711234725955633173')
