@@ -4,6 +4,8 @@ const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]
 
 const fs = require('fs');
 
+const AntiSpam = require('discord-anti-spam');
+
 const { get } = require('snekfetch')
 
 const Enmap = require("enmap");
