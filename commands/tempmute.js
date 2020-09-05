@@ -13,7 +13,7 @@ exports.run = async (client, message) => {
 
         if (!role) {
             try{
-              const muterole = await message.guild.roles.create({
+              muterole = await message.guild.roles.create({
                 name: "Muted",
                 color: "#000000",
                 permissions:[]
