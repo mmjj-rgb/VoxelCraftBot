@@ -23,6 +23,8 @@ exports.run = async (client, message) => {
                   ADD_REACTIONS: false
                 });
               });
+            }catch(e){
+              console.log(e.stack);
             }
         }
 
