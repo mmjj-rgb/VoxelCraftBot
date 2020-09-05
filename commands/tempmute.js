@@ -1,4 +1,4 @@
-exports.run = async (client, message, args) => {
+exports.run = async (client, message) => {
     const ms = require('ms');
     let messageArray = message.content.split(" ");
     let args = messageArray.slice(1);
