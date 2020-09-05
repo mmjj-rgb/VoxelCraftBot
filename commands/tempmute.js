@@ -7,7 +7,6 @@ exports.run = async (client, message) => {
         var member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
         if(!member) return message.reply('Please Provide a Member to TempMute.')
 
-        let mainrole = message.guild.roles.cache.find(role => role.name === "VOXELCRAFT");
         let role = message.guild.roles.cache.find(role => role.name === "Muted");
 
         if (!role) {
@@ -33,8 +32,7 @@ exports.run = async (client, message) => {
             return message.reply("Podaj czas wyciszenia!");
         }
 
-        member.roles.cache.remove(mainrole.id)
-        member.roles.cache.add(role.id);
+        member.roles.set([]).then(member => member.roles.add(role)).catch(console.error);
 
         message.channel.send(`@${member.user.tag} został wyciszony na: ${ms(ms(time))}`)
 
