@@ -33,8 +33,8 @@ exports.run = async (client, message) => {
             return message.reply("Podaj czas wyciszenia!");
         }
 
-        member.roles.remove(mainrole.id)
-        member.roles.add(role.id);
+        member.roles.cacheremove(mainrole.id)
+        member.roles.cache.add(role.id);
 
         message.channel.send(`@${member.user.tag} został wyciszony na: ${ms(ms(time))}`)
 
