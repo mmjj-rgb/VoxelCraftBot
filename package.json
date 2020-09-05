@@ -15,6 +15,7 @@
     "file-system": "^2.2.2",
     "simple-youtube-api": "^5.2.1",
     "snekfetch": "^4.0.4",
+    "ms": "^2.1.2",
     "ytdl-core": "^3.2.0"
   }
 }
