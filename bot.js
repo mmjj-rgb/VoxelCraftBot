@@ -62,12 +62,12 @@ client.on('message', async message =>  {
 
         let sent = await channel.send(new Discord.MessageEmbed()
             .setTitle("Zgłoszenia")
-            .setDescription("Znalazłeś/aś błąd lub chcesz się odwołać od bana lub złożyć skargę na gracza? Stwórz kanał na zgłoszenie poprzez kliknięcie w reakcje :envelope_with_arrow:")
+            .setDescription("Znalazłeś/aś błąd lub chcesz się odwołać od bana lub złożyć skargę na gracza? Stwórz kanał na zgłoszenie poprzez kliknięcie w reakcje :ticket:")
             .addField("**Uwaga:** Jeśli na Discordzie posiadasz inny nick niż w Minecraft, to masz obowiązek podać w zgłoszeniu swój nick!", "\u200B")
             .setColor("00e1ff")
         );
 
-        sent.react('📩');
+        sent.react('🎫');
         settings.set(`${message.guild.id}-zgloszenie`, sent.id);
 
         message.channel.send("Załozono kanał do ticketów!")
@@ -85,7 +85,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     if(!ticketid) return;
 
-    if(reaction.message.id == ticketid && reaction.emoji.name == '📩') {
+    if(reaction.message.id == ticketid && reaction.emoji.name == '🎫') {
         reaction.users.remove(user);
 
         reaction.message.guild.channels.create(`ticket-${user.username}`, {
