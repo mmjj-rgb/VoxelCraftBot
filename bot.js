@@ -71,6 +71,10 @@ client.on('message', async message =>  {
         settings.set(`${message.guild.id}-ticket`, sent.id);
 
         message.channel.send("Załozono kanał do ticketów!")
+    } else
+    if(command == "close") {
+        if(!message.channel.name.includes("ticket-")) return message.channel.send("Nie możesz tu tego użyć!")
+        message.channel.delete();
     }
 });
 
@@ -104,9 +108,5 @@ client.on('messageReactionAdd', async (reaction, user) => {
             channel.send(new Discord.MessageEmbed().setTitle(`<@${user.id}> Witaj na swoim zgłoszeniu!`).setDescription("Opisz błąd, który znalazłeś i poczekaj aż administracja ci odpisze").setColor("00ff00").then(messageReact => { messageReact.react('🔒') }))
         })}
     })
-    if(reaction.message.id == ticketid && reaction.emoji.name == '🔒') {
-        reaction.users.remove(user);
-        message.channel.delete();
-    }
 
 client.login(process.env.BOT_TOKEN);
