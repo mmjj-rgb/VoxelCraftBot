@@ -5,20 +5,20 @@ exports.run = (client, message, args) => {
     
     const [title, description, color, thumbnail, image] = message.content.slice(6).trim().split(' | ');
 
-        if (!title && !desc && !image && !color) {
+        if (!title && !description && !image && !color) {
             return;
         }
 
         if (title) {
             embed.setTitle(title);
         }
-        if (desc) {
+        if (description) {
             embed.setDescription(description);
         }
         if (image) {
             embed.setThumbnail(image);
         }
-        if (title) {
+        if (thumbnail) {
             embed.setThumbnail(thumbnail);
         }
         if (color) {
