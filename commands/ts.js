@@ -50,4 +50,3 @@ client.on('messageReactionAdd', async (reaction, user) => {
             channel.send(`<@${user.id}>`, new Discord.MessageEmbed().setTitle("Welcome to your ticket!").setDescription("We will be with you shortly").setColor("00ff00"))
         })
     }
-}
