@@ -1,10 +1,8 @@
 const Discord = require('discord.js');
 
-const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});
+const client = new Discord.Client({partials: ["MESSAGE", "USER", "REACTION"]});
 
 const fs = require('fs');
-
-const AntiSpam = require('discord-anti-spam');
 
 const { get } = require('snekfetch')
 
