@@ -8,7 +8,7 @@ const { get } = require('snekfetch')
 
 const Enmap = require("enmap");
 
-const { Canvas, registerFont, createCanvas } = require('canvas');
+const Canvas = require('canvas');
 
 client.commands = new Discord.Collection();
 
@@ -114,14 +114,13 @@ client.on('messageReactionAdd', async (reaction, user) => {
         })}
     })
 
-registerFont('Poppins-SemiBold.ttf', { family: 'Poppins' })
 
 const applyText = (canvas, text) => {
 	const ctx = canvas.getContext('2d');
 	let fontSize = 70;
 
 	do {
-		ctx.font = `${fontSize -= 10}px Poppins`;
+		ctx.font = `${fontSize -= 10}px sans-serif`;
 	} while (ctx.measureText(text).width > canvas.width - 300);
 
 	return ctx.font;
@@ -140,7 +139,7 @@ client.on('guildMemberAdd', async member => {
 	ctx.strokeStyle = '#74037b';
 	ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
-	ctx.font = '28px Poppins';
+	ctx.font = '28px sans-serif';
 	ctx.fillStyle = '#ffffff';
 	ctx.fillText('Welcome to the server,', canvas.width / 2.5, canvas.height / 3.5);
 
