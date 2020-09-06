@@ -8,7 +8,7 @@ const { get } = require('snekfetch')
 
 const Enmap = require("enmap");
 
-const { Canvas, registerFont } = require('canvas');
+const { Canvas, registerFont, createCanvas } = require('canvas');
 
 client.commands = new Discord.Collection();
 
