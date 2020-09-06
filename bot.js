@@ -85,7 +85,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     if(!ticketid) return;
 
-    if(reaction.message.id == ticketid && reaction.emoji.name == '🎫') {
+    if(reaction.message.id == ticketid && reaction.emoji.name == '📩') {
         reaction.users.remove(user);
 
         reaction.message.guild.channels.create(`ticket-${user.username}`, {
