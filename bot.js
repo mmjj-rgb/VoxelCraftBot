@@ -108,6 +108,5 @@ client.on('messageReactionAdd', async (reaction, user) => {
         reaction.users.remove(user);
         message.channel.delete();
     }
-})
 
 client.login(process.env.BOT_TOKEN);
