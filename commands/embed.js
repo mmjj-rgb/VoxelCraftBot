@@ -30,4 +30,3 @@ exports.run = (client, message, args) => {
             `s!customembed command used by ${message.author.username}`.rainbow
         );
     }
-}
