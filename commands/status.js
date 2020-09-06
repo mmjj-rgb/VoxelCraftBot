@@ -9,7 +9,6 @@ exports.run = async (client, message, args) => {
       const embed = new Discord.MessageEmbed()
       .setTitle('Informacje o serwerze:')
       .addField('Status:', '<:1_:739812127308775456>')
-      .setImage(link)
        return message.channel.send({embed})
     }
 }
