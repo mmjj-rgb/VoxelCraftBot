@@ -55,22 +55,22 @@ client.on('message', async message =>  {
         message.delete()
 	message.channel.send(`${message.author.username} jest patusem i pisze "aha" i elo benc :c`)
     } else
-    if(command == "ticket-setup") {
+    if(command == "ts") {
 
         let channel = message.mentions.channels.first();
-        if(!channel) return message.reply("Usage: `!ticket-setup #channel`");
+        if(!channel) return message.reply("Użycie: `!ts #kanał`");
 
         let sent = await channel.send(new Discord.MessageEmbed()
-            .setTitle("Ticket System")
-            .setDescription("React to open a ticket!")
-            .setFooter("Ticket System")
-            .setColor("00ff00")
+            .setTitle("Zgłoszenia")
+            .setDescription("Znalazłeś/aś błąd lub chcesz się odwołać od bana lub złożyć skargę na gracza? Stwórz kanał na zgłoszenie poprzez kliknięcie w reakcje :envelope_with_arrow:")
+            .addField("**Uwaga:** Jeśli na Discordzie posiadasz inny nick niż w Minecraft, to masz obowiązek podać w zgłoszeniu swój nick!", "\u200B")
+            .setColor("00e1ff")
         );
 
-        sent.react('🎫');
-        settings.set(`${message.guild.id}-ticket`, sent.id);
+        sent.react('📩');
+        settings.set(`${message.guild.id}-zgloszenie`, sent.id);
 
-        message.channel.send("Ticket System Setup Done!")
+        message.channel.send("Załozono kanał do ticketów!")
     }
 });
 
@@ -101,7 +101,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
             ],
             type: 'text'
         }).then(async channel => {
-            channel.send(`<@${user.id}>`, new Discord.MessageEmbed().setTitle("Welcome to your ticket!").setDescription("We will be with you shortly").setColor("00ff00"))
+            channel.send(`<@${user.id}>`, new Discord.MessageEmbed().setTitle("Witaj na swoim zgłoszeniu!").setDescription("Opisz błąd, który znalazłeś i poczekaj aż administracja ci odpisze").setColor("00ff00"))
         })}
     })
 
