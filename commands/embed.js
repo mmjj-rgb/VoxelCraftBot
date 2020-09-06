@@ -1,12 +1,7 @@
 exports.run = (client, message, args) => {
-    let msgArgs = args.slice(1).join(" ")
-    let text = args.join(" ")
     const Discord = require('discord.js')
     
-        const title = args['t'] || args['title'];
-        const desc = args['d'] || args['description'];
-        const image = args['i'] || args['image'];
-        const color = args['c'] || args['color'];
+    const [title, description, color, thumbnail, image] = message.content.slice(6).trim().split(' | ');
 
         if (!title && !desc && !image && !color) {
             return;
@@ -16,10 +11,13 @@ exports.run = (client, message, args) => {
             embed.setTitle(title);
         }
         if (desc) {
-            embed.setDescription(desc);
+            embed.setDescription(description);
         }
         if (image) {
             embed.setThumbnail(image);
+        }
+        if (title) {
+            embed.setThumbnail(thumbnail);
         }
         if (color) {
             embed.setColor(color);
