@@ -17,6 +17,7 @@
     "snekfetch": "^4.0.4",
     "ms": "^2.1.2",
     "discord-anti-spam": "^2.4.1",
+    "better-sqlite3": "^7.1.0",
     "ytdl-core": "^3.2.0"
   }
 }
