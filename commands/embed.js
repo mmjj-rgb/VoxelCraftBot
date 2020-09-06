@@ -1,6 +1,8 @@
 exports.run = (client, message, args) => {
     const Discord = require('discord.js')
     
+    const embed = new Discord.MessageEmbed()
+    
     const [title, description, color, thumbnail, image] = message.content.slice(6).trim().split(' | ');
 
         if (!title && !desc && !image && !color) {
