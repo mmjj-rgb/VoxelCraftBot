@@ -16,6 +16,13 @@ var config = require('./storages/config.json')
 
 client.config = config;
 
+const settings = new Enmap({
+    name: "settings",
+    autoFetch: true,
+    cloneLevel: "deep",
+    fetchAll: true
+});
+
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -41,39 +48,31 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on('message', async message =>  {
     if (message.author.bot || message.author === client.user) return;
-    let guild = client.guilds.cache.get('711234725955633173')
-	  var args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    var command = args.shift().toLowerCase();
-    const member = message.member;
-    const amount = args.join(' ');
-    const webhook = new Discord.WebhookClient(config.logsId, config.logsToken);
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
     const aha = message.content.toLowerCase();
     if(aha.includes("aha")) {
         message.delete()
 	message.channel.send(`${message.author.username} jest patusem i pisze "aha" i elo benc :c`)
+    } else
+    if(command == "ticket-setup") {
+
+        let channel = message.mentions.channels.first();
+        if(!channel) return message.reply("Usage: `!ticket-setup #channel`");
+
+        let sent = await channel.send(new Discord.MessageEmbed()
+            .setTitle("Ticket System")
+            .setDescription("React to open a ticket!")
+            .setFooter("Ticket System")
+            .setColor("00ff00")
+        );
+
+        sent.react('🎫');
+        settings.set(`${message.guild.id}-ticket`, sent.id);
+
+        message.channel.send("Ticket System Setup Done!")
     }
 });
-
-const settings = new Enmap({
-    name: "settings",
-    autoFetch: true,
-    cloneLevel: "deep",
-    fetchAll: true
-});
-
-if(command == "ticket-setup") {
-    let channel = message.mentions.channels.first();
-    if(!channel) return message.reply("Usage: `!ticket-setup #channel`");
-    let sent = await channel.send(new Discord.MessageEmbed()
-        .setTitle("Ticket System")
-        .setDescription("React to open a ticket!")
-        .setFooter("Ticket System")
-        .setColor("00ff00")
-    );
-    sent.react('🎫');
-    settings.set(`${message.guild.id}-ticket`, sent.id);
-    message.channel.send("Ticket System Setup Done!")
-}
 
 client.on('messageReactionAdd', async (reaction, user) => {
     if(user.partial) await user.fetch();
