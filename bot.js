@@ -54,6 +54,13 @@ client.on('message', async message =>  {
     }
 });
 
+const settings = new Enmap({
+    name: "settings",
+    autoFetch: true,
+    cloneLevel: "deep",
+    fetchAll: true
+});
+
 client.on('messageReactionAdd', async (reaction, user) => {
     if(user.partial) await user.fetch();
     if(reaction.partial) await reaction.fetch();
