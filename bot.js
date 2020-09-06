@@ -103,7 +103,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
         }).then(async channel => {
             channel.send(new Discord.MessageEmbed().setTitle(`<@${user.id}> Witaj na swoim zgłoszeniu!`).setDescription("Opisz błąd, który znalazłeś i poczekaj aż administracja ci odpisze").setColor("00ff00").then(messageReact => { messageReact.react('🔒') }))
         })}
-    }) return;
+    })
     if(reaction.message.id == ticketid && reaction.emoji.name == '🔒') {
         reaction.users.remove(user);
         message.channel.delete();
