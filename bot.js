@@ -68,7 +68,7 @@ client.on('message', async message =>  {
         );
 
         sent.react('🎫');
-        settings.set(`${message.guild.id}-zgloszenie`, sent.id);
+        settings.set(`${message.guild.id}-ticket`, sent.id);
 
         message.channel.send("Załozono kanał do ticketów!")
     }
