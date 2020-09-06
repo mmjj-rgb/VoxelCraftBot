@@ -77,6 +77,9 @@ client.on('message', async message =>  {
     if(command == "close") {
         if(!message.channel.name.includes("ticket-")) return message.channel.send("Nie możesz tu tego użyć!")
         message.channel.delete();
+    } else
+    if (message.content === '!join') {
+	client.emit('guildMemberAdd', message.member);
     }
 });
 
@@ -154,12 +157,6 @@ client.on('guildMemberAdd', async member => {
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
 
 	channel.send(`Welcome to the server, ${member}!`, attachment);
-});
-
-client.on('message', message => {
-	if (message.content === '!join') {
-		client.emit('guildMemberAdd', message.member);
-	}
 });
 
 client.login(process.env.BOT_TOKEN);
