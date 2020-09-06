@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
     const Enmap = require('enmap');
     
