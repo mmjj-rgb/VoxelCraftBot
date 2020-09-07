@@ -114,7 +114,7 @@ client.on('guildMemberAdd', async member => {
 	const guild = client.guilds.cache.get("683318858798596125");
 	const embed = new Discord.MessageEmbed()
 	.setDescription(`Witaj **${member.username}**`)
-	.addField(`Teraz jest **${client.guild.users.cache.filter(member => !member.user.bot).size} użytkowników!`)
+	.addField(`Teraz jest **${guild.users.cache.filter(member => !member.user.bot).size} użytkowników!`)
 	channel.send(embed);
 });
 
