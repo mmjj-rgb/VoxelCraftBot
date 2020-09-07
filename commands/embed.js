@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
     
     const embed = new Discord.MessageEmbed()
     
-    const [title, description, color, thumbnail, image] = message.content.slice(6).trim().split(' | ');
+    const [title, description, color, image] = message.content.slice(6).trim().split(' | ');
 
         if (!title && !description && !image && !color) {
             return;
@@ -17,9 +17,6 @@ exports.run = (client, message, args) => {
         }
         if (image) {
             embed.setThumbnail(image);
-        }
-        if (thumbnail) {
-            embed.setThumbnail(thumbnail);
         }
         if (color) {
             embed.setColor(color);
