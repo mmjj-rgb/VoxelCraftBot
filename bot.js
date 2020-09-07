@@ -104,7 +104,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
             ],
             type: 'text'
         }).then(async channel => {
-            channel.send(new Discord.MessageEmbed().setTitle(`<@${user.username}> Witaj na swoim zgłoszeniu!`).setDescription("Opisz błąd, który znalazłeś i poczekaj aż administracja ci odpisze").setColor("00ff00"))
+            channel.send(new Discord.MessageEmbed().setTitle(`${user.username} Witaj na swoim zgłoszeniu!`).setDescription("Opisz błąd, który znalazłeś i poczekaj aż administracja ci odpisze").setColor("00ff00"))
         })}
     })
 
@@ -113,7 +113,7 @@ client.on('guildMemberAdd', async member => {
 	if (!channel) return;
 	const guild = client.guilds.cache.get("683318858798596125");
 	const embed = new Discord.MessageEmbed()
-	.setDescription(`Witaj **${user.username}**`)
+	.setDescription(`Witaj **${member.username}**`)
 	.addField(`Teraz jest **${client.guild.members.cache.filter(member => !member.user.bot).size} użytkowników!`)
 	channel.send(embed);
 });
