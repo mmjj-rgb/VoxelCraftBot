@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
             embed.setDescription(description);
         }
         if (image) {
-            embed.setThumbnail(image);
+            embed.setImage(image);
         }
         if (color) {
             embed.setColor(color);
