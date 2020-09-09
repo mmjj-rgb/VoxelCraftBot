@@ -87,7 +87,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.partial) await reaction.message.fetch();
 
     if(user.bot) return;
-    if(!reaction.guild.channels.cache.find(ch => ch.name === '「🎉」wejścia-wyjścia')) return;
+    if(!reaction.message.guilds.channels.cache.find(ch => ch.name === '「🎉」wejścia-wyjścia')) return;
     if(reaction.emoji.name == '🎫') {
         reaction.users.remove(user);
 
