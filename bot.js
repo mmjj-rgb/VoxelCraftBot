@@ -81,13 +81,13 @@ client.on('message', async message =>  {
     }
 });
 
-client.on('messageReactionAdd', async (reaction, user) => {
+client.on('messageReactionAdd', async (reaction, user, channel) => {
     if(user.partial) await user.fetch();
     if(reaction.partial) await reaction.fetch();
     if(reaction.message.partial) await reaction.message.fetch();
 
     if(user.bot) return;
-
+    if(!reaction.message.channel.id == '752228998427443200') return;
     if(reaction.emoji.name == '🎫') {
         reaction.users.remove(user);
 
